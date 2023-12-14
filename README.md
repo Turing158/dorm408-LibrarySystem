@@ -2,7 +2,16 @@
 ***
 这只是后端，没有前端的内容！
 
+前端框架：Vue
 后端框架：SpringBoot
+
+这是前端↓
+
+gitee：https://gitee.com/GMCY2020/dorm408-LibrarySystem-Vue
+
+github：https://github.com/GMCY2020/dorm408-LibrarySystem-Vue
+
+这是后端↓
 
 gitee：https://gitee.com/turing-ice/dorm408-LibrarySystem
 

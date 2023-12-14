@@ -127,7 +127,6 @@ public class BookService {
 
     public Result borrowBook(String bookId,String user){
         Result result = new Result();
-//        int exist = bookDao.existBookLog(bookId,user);
         Book book = bookDao.findBookById(bookId);
         BookLog bookLog = new BookLog();
         bookLog.setUser_id(user);

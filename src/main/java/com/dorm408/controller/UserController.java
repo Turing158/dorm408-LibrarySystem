@@ -7,7 +7,6 @@ import com.dorm408.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sun.misc.Request;
 
 @Controller
 public class UserController {
