@@ -11,6 +11,7 @@ public class UserService {
     @Autowired
     UserDaoImpl userDao;
 
+//    用户登录业务
     public Result userLogin(String userId,String password){
         Result result = new Result();
         if(userDao.existUser(userId) == 1){
@@ -27,7 +28,7 @@ public class UserService {
         return result;
     }
 
-
+//  用户注册业务
     public Result UserRegister(String userId,String password){
         Result result = new Result();
         if(userDao.existUser(userId) == 0){
@@ -43,6 +44,7 @@ public class UserService {
         return result;
     }
 
+//    获取所有用户数量
     public Result countUser(){
         Result result = new Result();
         result.setStatus("success");
@@ -50,6 +52,7 @@ public class UserService {
         return result;
     }
 
+//    获取所有用户
     public Result findAllUser(int page){
         Result result = new Result();
         result.setStatus("success");
@@ -57,6 +60,7 @@ public class UserService {
         return result;
     }
 
+//    更新用户权限
     public Result updateUserPermission(String user,int permission){
         Result result = new Result();
         userDao.updateUserPermission(user,permission);
@@ -64,6 +68,7 @@ public class UserService {
         return result;
     }
 
+//    删除用户
     public Result deleteUser(String user){
         Result result = new Result();
         if(userDao.existLogByUser(user) == 0){

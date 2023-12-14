@@ -97,6 +97,7 @@ public class BookDaoImpl implements BookDao{
         return jdbcTemplate.update(sql,args);
     }
 
+//    更新书数量
     @Override
     public int updateBookCount(String book_id, int count) {
         String sql = "update book set book_count=? where book_id = ?";
@@ -127,6 +128,7 @@ public class BookDaoImpl implements BookDao{
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(BookType.class));
     }
 
+//    查询此书id是否有被借
     @Override
     public int existLogByBook(String book_id) {
         String sql = "select count(*) from book_log where book_id=?";

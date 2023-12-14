@@ -13,6 +13,7 @@ public class BookService {
     @Autowired
     BookDaoImpl bookDao;
 
+//    获取所有书
     public Result findAllBook(int page){
         Result result = new Result();
         List<ShowBook> books = bookDao.findAll((page-1)*10);
@@ -21,6 +22,7 @@ public class BookService {
         return result;
     }
 
+//    获取所有书数量
     public Result countBook(){
         Result result = new Result();
         result.setObject(bookDao.countAll());
@@ -28,6 +30,7 @@ public class BookService {
         return result;
     }
 
+//    根据书id查找书
     public Result findBookById(String id){
         Result result = new Result();
         if(bookDao.existBook(id) == 1){
@@ -39,7 +42,7 @@ public class BookService {
         return result;
     }
 
-
+//  根据名字搜索书
     public Result findBook(String name,int page){
         Result result = new Result();
         ShowBook book = bookDao.findBook(name,page);
@@ -52,12 +55,14 @@ public class BookService {
         return result;
     }
 
+//    获取书类型
     public Result getBook_type(){
         Result result = new Result();
         result.setObject(bookDao.findAllBookType());
         return result;
     }
 
+//    添加新书
     public Result insertBook(Book book){
         Result result = new Result();
         int exist = bookDao.existBook(book.getBook_id());
@@ -71,6 +76,9 @@ public class BookService {
         result.setStatus("书已经存在");
         return result;
     }
+
+
+//    更新书
     public Result updateBook(ShowBook showBook){
         Result result = new Result();
         if(bookDao.existBook(showBook.getBook_id()) == 1){
@@ -96,6 +104,8 @@ public class BookService {
         result.setStatus("error-id");
         return result;
     }
+
+//    删除书
     public Result deleteBook(String id){
         Result result = new Result();
         if(bookDao.existBook(id) == 1){
@@ -111,6 +121,7 @@ public class BookService {
         return result;
     }
 
+//    获取该用户所借的书
     public Result findUserBook(String user,int page){
         Result result = new Result();
         result.setObject(bookDao.findUserBook(user, (page-1)*10));
@@ -118,6 +129,7 @@ public class BookService {
         return result;
     }
 
+//    获取该用户借了几本书
     public Result countUserBook(String user_id){
         Result result = new Result();
         result.setObject(bookDao.countUserBook(user_id));
@@ -125,6 +137,7 @@ public class BookService {
         return result;
     }
 
+//    借书业务
     public Result borrowBook(String bookId,String user){
         Result result = new Result();
         Book book = bookDao.findBookById(bookId);
@@ -141,7 +154,7 @@ public class BookService {
         return result;
     }
 
-
+//  还书业务
     public Result backBook(String book_id,String user,String date){
         Result result = new Result();
         bookDao.backBook(book_id, user , date);

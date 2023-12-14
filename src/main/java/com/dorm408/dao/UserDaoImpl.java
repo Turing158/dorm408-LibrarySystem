@@ -14,6 +14,7 @@ public class UserDaoImpl implements UserDao{
     @Resource
     JdbcTemplate jdbcTemplate;
 
+//    查询所有用户[分页]
     @Override
     public List<User> findAll(int page) {
         String sql = "select * from user limit ?,10";
@@ -21,13 +22,14 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.query(sql,args,new BeanPropertyRowMapper<>(User.class));
     }
 
+//    查询所有用户数量
     @Override
     public int countUser() {
         String sql = "select count(*) from user";
         return jdbcTemplate.queryForObject(sql,Integer.class);
     }
 
-
+//  查询用户id是否存在
     @Override
     public int existUser(String id) {
         String sql = "select count(*) from user where user_id=?";
@@ -35,6 +37,7 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.queryForObject(sql,args,Integer.class);
     }
 
+//    查询指定用户id
     @Override
     public User findUser(String id) {
         String sql = "select * from user where user_id=?";
@@ -42,6 +45,7 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.queryForObject(sql,args,new BeanPropertyRowMapper<>(User.class));
     }
 
+//    插入新用户
     @Override
     public int insertUser(User user) {
         String sql = "insert into user values(?,?,?,?)";
@@ -49,6 +53,7 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.update(sql,args);
     }
 
+//    删除指定用户
     @Override
     public int deleteUser(String id) {
         String sql = "delete from user where user_id=?";
@@ -56,6 +61,7 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.update(sql,args);
     }
 
+//    更改用户权限
     @Override
     public int updateUserPermission(String user, int permission) {
         String sql = "update user set user_permission=? where user_id=?";
@@ -63,6 +69,7 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.update(sql,args);
     }
 
+//    查询此用户是否有借书
     @Override
     public int existLogByUser(String user) {
         String sql = "select count(*) from book_log where user_id=?";
