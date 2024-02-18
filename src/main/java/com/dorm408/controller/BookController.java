@@ -18,63 +18,53 @@ public class BookController {
 
 
     @PostMapping("/findAllBook")
-    @ResponseBody
-    public Result findAllBook(@RequestBody RequestParam requestParam){
-        return bookService.findAllBook(requestParam.getPage());
+    public Result findAllBook(int page){
+        return bookService.findAllBook(page);
     }
 
     @PostMapping("/countBook")
-    @ResponseBody
     public Result countBook(){
         return bookService.countBook();
     }
 
 
     @PostMapping("/findBook")
-    @ResponseBody
     public Result findBook(@RequestBody RequestParam requestParam){
         return bookService.findBookById(requestParam.getBook_id());
     }
 
     @PostMapping("/delBook")
-    @ResponseBody
     public Result deleteBook(@RequestBody RequestParam requestParam){
         return bookService.deleteBook(requestParam.getBook_id());
     }
 
     @PostMapping("/countUserBook")
-    @ResponseBody
-    public Result countUserBook(@RequestBody RequestParam requestParam){
-        return bookService.countUserBook(requestParam.getUser_id());
+    public Result countUserBook(String user){
+        return bookService.countUserBook(user);
     }
 
     @PostMapping("/borrow")
-    @ResponseBody
-    public Result borrowBook(@RequestBody RequestParam requestParam){
-        return bookService.borrowBook(requestParam.getBook_id(),requestParam.getUser_id());
+    public Result borrowBook(String id,String user){
+        return bookService.borrowBook(id,user);
     }
 
     @PostMapping("/backBook")
-    @ResponseBody
-    public Result backBook(@RequestBody RequestParam requestParam){
-        return bookService.backBook(requestParam.getBook_id(),requestParam.getUser_id(),requestParam.getDate());
+    public Result backBook(String id,String user,String date){
+        return bookService.backBook(id,user,date);
     }
 
     @PostMapping("/getUserBook")
-    @ResponseBody
-    public Result findUserBook(@RequestBody RequestParam requestParam){
-        return bookService.findUserBook(requestParam.getUser_id(),requestParam.getPage());
+    public Result findUserBook(String user,int page){
+        return bookService.findUserBook(user,page);
     }
 
 
     @PostMapping("/updateBook")
-    @ResponseBody
     public Result updateBook(@RequestBody ShowBook showBook){
         return bookService.updateBook(showBook);
     }
 
     @PostMapping("/insertBook")
-    @ResponseBody
     public Result insertBook(@RequestBody Book book){
         return bookService.insertBook(book);
     }

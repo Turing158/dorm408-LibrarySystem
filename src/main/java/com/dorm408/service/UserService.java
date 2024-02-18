@@ -21,10 +21,10 @@ public class UserService {
                 result.setObject(user);
                 return result;
             }
-            result.setStatus("密码错误！");
+            result.setStatus("error-password");
             return result;
         }
-        result.setStatus("该用户不存在！");
+        result.setStatus("error-user");
         return result;
     }
 
